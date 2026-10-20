@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tienda online de productos naturales. Conoce nuestros productos y realiza tu pedido.">
+  <title>Raíz Natural | Tienda online</title>
+  <style>
+    :root{--green:#315b43;--green2:#52785c;--cream:#f7f5ed;--ink:#26342a;--muted:#68736a;--white:#fff;--line:#e3e6dc}
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.5}
+    a{color:inherit} button,input,textarea{font:inherit}
+    header{background:var(--cream);padding:18px 5%;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+    .brand{font-size:1.35rem;font-weight:800;letter-spacing:.04em;color:var(--green)} nav{display:flex;gap:18px;flex-wrap:wrap} nav a{text-decoration:none;font-size:.95rem}
+    .hero{padding:64px 5%;background:linear-gradient(115deg,#f7f5ed,#e8efe4);display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:28px}
+    .eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;font-weight:700;color:var(--green2)}
+    h1{font-size:clamp(2.2rem,5vw,4.1rem);line-height:1.04;margin:12px 0 18px;max-width:680px}
+    .hero p{max-width:560px;color:#4e5e51;font-size:1.08rem}
+    .hero-art{min-height:280px;border-radius:28px;background:radial-gradient(circle at 60% 35%,#c4d3b9 0 18%,transparent 19%),radial-gradient(ellipse at 50% 68%,#6e8b64 0 24%,transparent 25%),linear-gradient(135deg,#dce6d4,#f2ead9);display:flex;align-items:center;justify-content:center;color:#315b43;font-size:5rem}
+    .btn{border:0;border-radius:999px;background:var(--green);color:#fff;padding:12px 20px;cursor:pointer;text-decoration:none;display:inline-block;font-weight:700}
+    .btn.secondary{background:transparent;color:var(--green);border:1px solid var(--green)}
+    section{padding:48px 5%}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}h2{font-size:clamp(1.7rem,3vw,2.4rem);margin:0 0 6px}.muted{color:var(--muted)}
+    .products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .product{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+    .product-img{height:190px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,#edf1e7,#f8f2e5)}
+    .product-body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}.product h3{margin:0;font-size:1.1rem}.price{font-size:1.15rem;font-weight:800;color:var(--green)}.product p{margin:0;color:var(--muted);font-size:.94rem}.product .btn{margin-top:8px}
+    .info{background:var(--cream);display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.info article{padding:18px}.info strong{display:block;color:var(--green);font-size:1.05rem;margin-bottom:6px}
+    .checkout{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}.panel{border:1px solid var(--line);border-radius:18px;padding:22px}.cart-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.cart-row small{display:block;color:var(--muted)}.qty{display:flex;align-items:center;gap:8px}.qty button{border:1px solid var(--line);background:#fff;border-radius:8px;width:30px;height:30px;cursor:pointer}
+    label{display:block;font-weight:700;font-size:.92rem;margin:12px 0 5px}input,textarea{width:100%;padding:11px 12px;border:1px solid #cfd7cb;border-radius:10px;background:#fff}textarea{min-height:80px;resize:vertical}.total{display:flex;justify-content:space-between;font-size:1.2rem;font-weight:800;margin:18px 0}
+    footer{background:#233a2b;color:#fff;padding:28px 5%;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}footer p{margin:4px 0;color:#e0e8df}
+    .note{font-size:.85rem;color:var(--muted)}.empty{color:var(--muted);padding:12px 0}
+    @media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:44px}.hero-art{min-height:180px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.info{grid-template-columns:1fr}.checkout{grid-template-columns:1fr}}
+    @media(max-width:480px){header{align-items:flex-start}.products{grid-template-columns:1fr}.product-img{height:170px}nav{gap:12px}}
+  </style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#" style="text-decoration:none">RAÍZ NATURAL</a>
+  <nav><a href="#productos">Productos</a><a href="#nosotros">Nosotros</a><a href="#pedido">Mi pedido (<span id="cart-count">0</span>)</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Bienestar inspirado en la naturaleza</div>
+      <h1>Pequeños rituales, bienestar natural.</h1>
+      <p>Descubre productos seleccionados para acompañar tus rutinas. Explora el catálogo y realiza tu pedido de forma sencilla.</p>
+      <a class="btn" href="#productos">Explorar productos</a>
+      <a class="btn secondary" href="#nosotros" style="margin-left:8px">Conócenos</a>
+    </div>
+    <div class="hero-art" aria-label="Ilustración botánica decorativa">✿</div>
+  </section>
+
+  <section id="productos">
+    <div class="section-head"><div><div class="eyebrow">Nuestro catálogo</div><h2>Productos destacados</h2><div class="muted">Precios de ejemplo: cámbialos por los tuyos.</div></div></div>
+    <div class="products" id="products-list"></div>
+  </section>
+
+  <section class="info" id="nosotros">
+    <article><strong>Ingredientes seleccionados</strong><span class="muted">Describe aquí el origen y las características reales de tus productos.</span></article>
+    <article><strong>Atención cercana</strong><span class="muted">Te ayudamos a elegir y resolvemos tus dudas antes de comprar.</span></article>
+    <article><strong>Pedidos fáciles</strong><span class="muted">Envía tu pedido y coordina el pago y la entrega directamente con nosotros.</span></article>
+  </section>
+
+  <section id="pedido">
+    <div class="section-head"><div><div class="eyebrow">Finaliza tu compra</div><h2>Tu pedido</h2><div class="muted">Revisa los productos y completa tus datos.</div></div></div>
+    <div class="checkout">
+      <div class="panel"><h3>Resumen del carrito</h3><div id="cart-items"><div class="empty">Todavía no has añadido productos.</div></div><div class="total"><span>Total estimado</span><span id="cart-total">$0.00</span></div><p class="note">El costo de envío, disponibilidad y método de pago se confirman contigo antes de completar la compra.</p></div>
+      <form class="panel" id="order-form"><h3>Datos para el pedido</h3>
+        <label for="customer-name">Nombre completo *</label><input id="customer-name" required autocomplete="name" placeholder="Tu nombre">
+        <label for="customer-phone">Teléfono *</label><input id="customer-phone" required autocomplete="tel" placeholder="Tu número de contacto">
+        <label for="customer-city">Ciudad / sector *</label><input id="customer-city" required placeholder="Ej. Quito, sector norte">
+        <label for="customer-address">Dirección de entrega *</label><textarea id="customer-address" required placeholder="Calle principal, referencia, etc."></textarea>
+        <label for="customer-notes">Notas (opcional)</label><textarea id="customer-notes" placeholder="Horario preferido u otra indicación"></textarea>
+        <button class="btn" type="submit" style="width:100%;margin-top:16px">Enviar pedido por WhatsApp</button>
+        <p class="note">Este botón abre WhatsApp con el resumen del pedido. No se cobra automáticamente en esta versión.</p>
+      </form>
+    </div>
+  </section>
+</main>
+<footer><div><strong>RAÍZ NATURAL</strong><p>Bienestar con inspiración natural.</p></div><div><p>Atención al cliente</p><p>Reemplaza este texto por tus datos de contacto.</p></div></footer>
+
+<script>
+  // EDITA AQUÍ: cambia nombres, descripciones, precios e iconos por tus productos reales.
+  const products = [
+    {id:1,name:"Producto natural 1",description:"Añade una breve descripción clara y real del producto.",price:8.00,icon:"🌿"},
+    {id:2,name:"Producto natural 2",description:"Cuenta qué contiene, cómo se presenta y para quién es.",price:12.00,icon:"🍃"},
+    {id:3,name:"Producto natural 3",description:"Incluye información útil y evita promesas de salud no verificadas.",price:6.50,icon:"🌼"}
+  ];
+  // IMPORTANTE: reemplaza por tu número de WhatsApp con código de país, solo números.
+  // Ejemplo de formato Ecuador: 5939XXXXXXXX (sin +, espacios ni guiones).
+  const WHATSAPP_NUMBER = "593XXXXXXXXX";
+  const cart = {};
+  const money = n => new Intl.NumberFormat("es-EC",{style:"currency",currency:"USD"}).format(n);
+  const productList = document.getElementById("products-list");
+  productList.innerHTML = products.map(p => `
+    <article class="product">
+      <div class="product-img" role="img" aria-label="${p.name}">${p.icon}</div>
+      <div class="product-body"><h3>${p.name}</h3><p>${p.description}</p><div class="price">${money(p.price)}</div>
+      <button class="btn" type="button" onclick="addToCart(${p.id})">Añadir al carrito</button></div>
+    </article>`).join("");
+
+  function addToCart(id){cart[id]=(cart[id]||0)+1;renderCart()}
+  function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];renderCart()}
+  function renderCart(){
+    const ids=Object.keys(cart);const items=document.getElementById("cart-items");
+    document.getElementById("cart-count").textContent=ids.reduce((s,id)=>s+cart[id],0);
+    if(!ids.length){items.innerHTML='<div class="empty">Todavía no has añadido productos.</div>';}
+    else{items.innerHTML=ids.map(id=>{const p=products.find(x=>x.id===Number(id));return `<div class="cart-row"><div><strong>${p.name}</strong><small>${money(p.price)} c/u</small></div><div class="qty"><button type="button" aria-label="Quitar uno" onclick="changeQty(${p.id},-1)">−</button><span>${cart[id]}</span><button type="button" aria-label="Añadir uno" onclick="changeQty(${p.id},1)">+</button></div><strong>${money(p.price*cart[id])}</strong></div>`}).join("")}
+    const total=ids.reduce((s,id)=>s+products.find(p=>p.id===Number(id)).price*cart[id],0);
+    document.getElementById("cart-total").textContent=money(total);
+  }
+  document.getElementById("order-form").addEventListener("submit",function(e){
+    e.preventDefault();
+    const ids=Object.keys(cart);if(!ids.length){alert("Añade al menos un producto al carrito.");return}
+    if(WHATSAPP_NUMBER.includes("X")){alert("Antes de recibir pedidos, edita el número WHATSAPP_NUMBER en el código con tu número de WhatsApp Business.");return}
+    const total=ids.reduce((s,id)=>s+products.find(p=>p.id===Number(id)).price*cart[id],0);
+    const lines=ids.map(id=>{const p=products.find(x=>x.id===Number(id));return `• ${p.name} x${cart[id]} — ${money(p.price*cart[id])}`});
+    const message=[
+      "Hola, quiero realizar este pedido:",
+      "",
+      ...lines,
+      "",
+      `Total estimado: ${money(total)}`,
+      "",
+      `Nombre: ${document.getElementById("customer-name").value}`,
+      `Teléfono: ${document.getElementById("customer-phone").value}`,
+      `Ciudad/sector: ${document.getElementById("customer-city").value}`,
+      `Dirección: ${document.getElementById("customer-address").value}`,
+      `Notas: ${document.getElementById("customer-notes").value||"Ninguna"}`,
+      "",
+      "Por favor, confirmen disponibilidad, envío y métodos de pago."
+    ].join("\n");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,"_blank","noopener");
+  });
+</script>
+</body>
+</html>
